@@ -14,13 +14,10 @@ sweep:
     baseline: 16
     extended: 20
   thread_affinity: core
-  page_size: 4KB
-  dtype: FP64
   array_size:
     smoke: 10000000
     baseline: 20000000
     extended: 40000000
-  kernel_types: copy,scale,add,triad
   num_iterations:
     smoke: 2
     baseline: 30800

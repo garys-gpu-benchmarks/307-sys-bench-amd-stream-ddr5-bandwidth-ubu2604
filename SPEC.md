@@ -2,7 +2,7 @@
 
 ## Execution Description
 
-Compiles official STREAM src/stream.c inline and runs build/stream with OMP_NUM_THREADS. num_threads: OpenMP workers. array_size: STREAM_ARRAY_SIZE. num_iterations: NTIMES. Sweep dimensions: numa_node, num_threads, thread_affinity, page_size, dtype, array_size, kernel_types, num_iterations.
+Compiles official STREAM src/stream.c inline and runs build/stream with OMP_NUM_THREADS. num_threads: OpenMP workers. array_size: STREAM_ARRAY_SIZE. num_iterations: NTIMES. Sweep dimensions: numa_node, num_threads, thread_affinity, array_size, num_iterations.
 
 ## Parameters
 
@@ -11,10 +11,7 @@ Compiles official STREAM src/stream.c inline and runs build/stream with OMP_NUM_
 | numa_node | `--numa-node` | smoke=0, baseline=0, extended=0 | 0 | From Parameter list; see Execution Description With Parameters. |
 | num_threads | `--num-threads` | smoke=4, baseline=16, extended=20 | 16 | From Parameter list; see Execution Description With Parameters. |
 | thread_affinity | `--thread-affinity` | smoke=core, baseline=core, extended=core | core | From Parameter list; see Execution Description With Parameters. |
-| page_size | `--page-size` | smoke=4KB, baseline=4KB, extended=4KB | 4KB | From Parameter list; see Execution Description With Parameters. |
-| dtype | `--dtype` | smoke=FP64, baseline=FP64, extended=FP64 | FP64 | From Parameter list; see Execution Description With Parameters. |
 | array_size | `--array-size` | smoke=10000000, baseline=20000000, extended=40000000 | 20000000 | From Parameter list; see Execution Description With Parameters. |
-| kernel_types | `--kernel-types` | smoke=copy,scale,add,triad, baseline=copy,scale,add,triad, extended=copy,scale,add,triad | copy,scale,add,triad | From Parameter list; see Execution Description With Parameters. |
 | num_iterations | `--num-iterations` | smoke=2, baseline=30800, extended=45600 | 30800 | From Parameter list; see Execution Description With Parameters. |
 
 ## Invocation
@@ -43,7 +40,7 @@ Compiles official STREAM src/stream.c inline and runs build/stream with OMP_NUM_
 
 ## Installation and Execution Summary
 
-Compile official STREAM src/stream.c with gcc -O3 -fopenmp, run build/stream under OMP_NUM_THREADS, parse Copy/Scale/Add/Triad Best Rate MB/s, convert to GB/s, and compute triad/400 efficiency, to measure CPU STREAM bandwidth. numactl is not used
+Compile official STREAM src/stream.c with gcc -O3 -fopenmp, run build/stream under OMP_NUM_THREADS, parse Copy/Scale/Add/Triad Best Rate MB/s, convert to GB/s to measure CPU STREAM bandwidth. numactl is not used
 
 ## Platform Portability
 

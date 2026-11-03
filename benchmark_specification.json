@@ -32,7 +32,7 @@
   {
     "field_name": "Validation Objective",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "Validates Copy/Scale/Add/Triad Best Rate parse and triad/400 efficiency. numactl pinning is not applied"
+    "value": "Validates Copy/Scale/Add/Triad Best Rate parse. numactl pinning is not applied"
   },
   {
     "field_name": "Metrics",
@@ -47,12 +47,12 @@
   {
     "field_name": "Command Execution Details and Purpose",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "Compile official STREAM src/stream.c with gcc -O3 -fopenmp, run build/stream under OMP_NUM_THREADS, parse Copy/Scale/Add/Triad Best Rate MB/s, convert to GB/s, and compute triad/400 efficiency, to measure CPU STREAM bandwidth. numactl is not used"
+    "value": "Compile official STREAM src/stream.c with gcc -O3 -fopenmp, run build/stream under OMP_NUM_THREADS, parse Copy/Scale/Add/Triad Best Rate MB/s, convert to GB/s to measure CPU STREAM bandwidth. numactl is not used"
   },
   {
     "field_name": "Command Methodology",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "Compile official STREAM src/stream.c with gcc -O3 -fopenmp, run build/stream under OMP_NUM_THREADS, parse Copy, Scale, Add, and Triad Best Rate MB/s, convert to GB/s, and compute triad/400 efficiency. numactl is not used"
+    "value": "Compile official STREAM src/stream.c with gcc -O3 -fopenmp, run build/stream under OMP_NUM_THREADS, parse Copy, Scale, Add, and Triad Best Rate MB/s, convert to GB/s. numactl is not used"
   },
   {
     "field_name": "Execution Description With Parameters",
@@ -102,17 +102,17 @@
   {
     "field_name": "run_benchmark Command Plus Options for Smoke Run",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "bash run_benchmark.sh --smoke --validate --numa-node 0 --num-threads 4 --thread-affinity core --page-size 4KB --dtype FP64 --array-size 10000000 --kernel-types copy,scale,add,triad --num-iterations 2"
+    "value": "bash run_benchmark.sh --smoke --validate --numa-node 0 --num-threads 4 --thread-affinity core --array-size 10000000 --num-iterations 2"
   },
   {
     "field_name": "run_benchmark Command Plus Options for Baseline Run",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "bash run_benchmark.sh --baseline --validate --numa-node 0 --num-threads 16 --thread-affinity core --page-size 4KB --dtype FP64 --array-size 20000000 --kernel-types copy,scale,add,triad --num-iterations 30800"
+    "value": "bash run_benchmark.sh --baseline --validate --numa-node 0 --num-threads 16 --thread-affinity core --array-size 20000000 --num-iterations 30800"
   },
   {
     "field_name": "run_benchmark Command Plus Options for Extended Run",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "bash run_benchmark.sh --extended --validate --numa-node 0 --num-threads 20 --thread-affinity core --page-size 4KB --dtype FP64 --array-size 40000000 --kernel-types copy,scale,add,triad --num-iterations 45600"
+    "value": "bash run_benchmark.sh --extended --validate --numa-node 0 --num-threads 20 --thread-affinity core --array-size 40000000 --num-iterations 45600"
   },
   {
     "field_name": "Output Fields / Metrics to Parse",
@@ -242,27 +242,27 @@
   {
     "field_name": "Parameter_04",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "page_size"
+    "value": "array_size"
   },
   {
     "field_name": "Parameter_05",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "dtype"
+    "value": "num_iterations"
   },
   {
     "field_name": "Parameter_06",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "array_size"
+    "value": "-"
   },
   {
     "field_name": "Parameter_07",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "kernel_types"
+    "value": "-"
   },
   {
     "field_name": "Parameter_08",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "num_iterations"
+    "value": "-"
   },
   {
     "field_name": "Parameter_09",
@@ -367,7 +367,7 @@
   {
     "field_name": "Installation and Execution Summary",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "Compile official STREAM src/stream.c with gcc -O3 -fopenmp, run build/stream under OMP_NUM_THREADS, parse Copy/Scale/Add/Triad Best Rate MB/s, convert to GB/s, and compute triad/400 efficiency, to measure CPU STREAM bandwidth. numactl is not used"
+    "value": "Compile official STREAM src/stream.c with gcc -O3 -fopenmp, run build/stream under OMP_NUM_THREADS, parse Copy/Scale/Add/Triad Best Rate MB/s, convert to GB/s to measure CPU STREAM bandwidth. numactl is not used"
   },
   {
     "field_name": "Workload Command Line Executable",
@@ -387,7 +387,7 @@
   {
     "field_name": "Execution Summary (Run and Measure)",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "Compile official STREAM src/stream.c with gcc -O3 -fopenmp, run build/stream under OMP_NUM_THREADS, parse Copy/Scale/Add/Triad Best Rate MB/s, convert to GB/s, and compute triad/400 efficiency, to measure CPU STREAM bandwidth. numactl is not used"
+    "value": "Compile official STREAM src/stream.c with gcc -O3 -fopenmp, run build/stream under OMP_NUM_THREADS, parse Copy/Scale/Add/Triad Best Rate MB/s, convert to GB/s to measure CPU STREAM bandwidth. numactl is not used"
   },
   {
     "field_name": "nVidia Porting Instructions (Reference Only)",
@@ -407,7 +407,7 @@
   {
     "field_name": "Profile Parameter Values",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Parameters_SmokeBaselineExtend",
-    "value": "{\"numa_node\": {\"smoke\": \"0\", \"baseline\": \"0\", \"extended\": \"0\", \"notes\": \"\"}, \"num_threads\": {\"smoke\": \"4\", \"baseline\": \"16\", \"extended\": \"20\", \"notes\": \"\"}, \"thread_affinity\": {\"smoke\": \"core\", \"baseline\": \"core\", \"extended\": \"core\", \"notes\": \"\"}, \"page_size\": {\"smoke\": \"4KB\", \"baseline\": \"4KB\", \"extended\": \"4KB\", \"notes\": \"\"}, \"dtype\": {\"smoke\": \"FP64\", \"baseline\": \"FP64\", \"extended\": \"FP64\", \"notes\": \"\"}, \"array_size\": {\"smoke\": \"10000000\", \"baseline\": \"20000000\", \"extended\": \"40000000\", \"notes\": \"\"}, \"kernel_types\": {\"smoke\": \"copy,scale,add,triad\", \"baseline\": \"copy,scale,add,triad\", \"extended\": \"copy,scale,add,triad\", \"notes\": \"Sweep/list value. Command column documents it; omit this flag so yaml expands cases.\"}, \"num_iterations\": {\"smoke\": \"2\", \"baseline\": \"30800\", \"extended\": \"45600\", \"notes\": \"VM 2026-08-16 array_size=20M num_iterations=11000 -> 184s (3:04), 2 STREAM invocations. Extended 36000 extrapolated ~10:03, not tested. Retimed 2026-08-17 toward 3-4 min baseline; extended scaled by the same factor. 2026-08-18 retune: baseline>=3min / extended>=10min or extended~15min; NVIDIA copied from AMD.\"}}"
+    "value": "{\"numa_node\": {\"smoke\": \"0\", \"baseline\": \"0\", \"extended\": \"0\", \"notes\": \"\"}, \"num_threads\": {\"smoke\": \"4\", \"baseline\": \"16\", \"extended\": \"20\", \"notes\": \"\"}, \"thread_affinity\": {\"smoke\": \"core\", \"baseline\": \"core\", \"extended\": \"core\", \"notes\": \"\"}, \"array_size\": {\"smoke\": \"10000000\", \"baseline\": \"20000000\", \"extended\": \"40000000\", \"notes\": \"\"}, \"num_iterations\": {\"smoke\": \"2\", \"baseline\": \"30800\", \"extended\": \"45600\", \"notes\": \"VM 2026-08-16 array_size=20M num_iterations=11000 -> 184s (3:04), 2 STREAM invocations. Extended 36000 extrapolated ~10:03, not tested. Retimed 2026-08-17 toward 3-4 min baseline; extended scaled by the same factor. 2026-08-18 retune: baseline>=3min / extended>=10min or extended~15min; NVIDIA copied from AMD.\"}}"
   },
   {
     "field_name": "Profile Command Authorship",

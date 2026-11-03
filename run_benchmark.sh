@@ -48,10 +48,7 @@ Workload options:
   --numa-node <value>            Override numa_node
   --num-threads <value>            Override num_threads
   --thread-affinity <value>            Override thread_affinity
-  --page-size <value>            Override page_size
-  --dtype <value>            Override dtype
   --array-size <value>            Override array_size
-  --kernel-types <value>            Override kernel_types
   --num-iterations <value>            Override num_iterations
 
 Information:
@@ -89,10 +86,7 @@ SAVE_OPTIONS_FILE=""
 NUMA_NODE=""
 NUM_THREADS=""
 THREAD_AFFINITY=""
-PAGE_SIZE=""
-DTYPE=""
 ARRAY_SIZE=""
-KERNEL_TYPES=""
 NUM_ITERATIONS=""
 
 while [[ $# -gt 0 ]]; do
@@ -117,10 +111,7 @@ while [[ $# -gt 0 ]]; do
     --numa-node) NUMA_NODE="${2:-}"; shift 2 ;;
     --num-threads) NUM_THREADS="${2:-}"; shift 2 ;;
     --thread-affinity) THREAD_AFFINITY="${2:-}"; shift 2 ;;
-    --page-size) PAGE_SIZE="${2:-}"; shift 2 ;;
-    --dtype) DTYPE="${2:-}"; shift 2 ;;
     --array-size) ARRAY_SIZE="${2:-}"; shift 2 ;;
-    --kernel-types) KERNEL_TYPES="${2:-}"; shift 2 ;;
     --num-iterations) NUM_ITERATIONS="${2:-}"; shift 2 ;;
     --help|--specification|--matrix-definition) shift ;;
     *) die "Unknown option: $1" ;;
@@ -163,10 +154,7 @@ PY
 NUMA_NODE="${NUMA_NODE:-$(yaml_get numa_node)}"
 NUM_THREADS="${NUM_THREADS:-$(yaml_get num_threads)}"
 THREAD_AFFINITY="${THREAD_AFFINITY:-$(yaml_get thread_affinity)}"
-PAGE_SIZE="${PAGE_SIZE:-$(yaml_get page_size)}"
-DTYPE="${DTYPE:-$(yaml_get dtype)}"
 ARRAY_SIZE="${ARRAY_SIZE:-$(yaml_get array_size)}"
-KERNEL_TYPES="${KERNEL_TYPES:-$(yaml_get kernel_types)}"
 NUM_ITERATIONS="${NUM_ITERATIONS:-$(yaml_get num_iterations)}"
 OUTPUT_FORMAT="${OUTPUT_FORMAT:-$(yaml_get output_format)}"
 OUTPUT_FORMAT="${OUTPUT_FORMAT:-csv}"
@@ -176,10 +164,7 @@ BENCHMARK_RUN_COMMAND="bash run_benchmark.sh --${PROFILE}"
 [[ -n "${NUMA_NODE}" ]] && BENCHMARK_RUN_COMMAND+=" --numa-node $(printf %q "${NUMA_NODE}")"
 [[ -n "${NUM_THREADS}" ]] && BENCHMARK_RUN_COMMAND+=" --num-threads $(printf %q "${NUM_THREADS}")"
 [[ -n "${THREAD_AFFINITY}" ]] && BENCHMARK_RUN_COMMAND+=" --thread-affinity $(printf %q "${THREAD_AFFINITY}")"
-[[ -n "${PAGE_SIZE}" ]] && BENCHMARK_RUN_COMMAND+=" --page-size $(printf %q "${PAGE_SIZE}")"
-[[ -n "${DTYPE}" ]] && BENCHMARK_RUN_COMMAND+=" --dtype $(printf %q "${DTYPE}")"
 [[ -n "${ARRAY_SIZE}" ]] && BENCHMARK_RUN_COMMAND+=" --array-size $(printf %q "${ARRAY_SIZE}")"
-[[ -n "${KERNEL_TYPES}" ]] && BENCHMARK_RUN_COMMAND+=" --kernel-types $(printf %q "${KERNEL_TYPES}")"
 [[ -n "${NUM_ITERATIONS}" ]] && BENCHMARK_RUN_COMMAND+=" --num-iterations $(printf %q "${NUM_ITERATIONS}")"
 set_benchmark_run_command "${BENCHMARK_RUN_COMMAND}"
 
@@ -226,10 +211,7 @@ run_collection() {
   grep -q -- '--numa-node' <<<"${help}" && collect_args+=(--numa-node "${NUMA_NODE}")
   grep -q -- '--num-threads' <<<"${help}" && collect_args+=(--num-threads "${NUM_THREADS}")
   grep -q -- '--thread-affinity' <<<"${help}" && collect_args+=(--thread-affinity "${THREAD_AFFINITY}")
-  grep -q -- '--page-size' <<<"${help}" && collect_args+=(--page-size "${PAGE_SIZE}")
-  grep -q -- '--dtype' <<<"${help}" && collect_args+=(--dtype "${DTYPE}")
   grep -q -- '--array-size' <<<"${help}" && collect_args+=(--array-size "${ARRAY_SIZE}")
-  grep -q -- '--kernel-types' <<<"${help}" && collect_args+=(--kernel-types "${KERNEL_TYPES}")
   grep -q -- '--num-iterations' <<<"${help}" && collect_args+=(--num-iterations "${NUM_ITERATIONS}")
 
   printf -v collect_cmd '%q ' "${PYTHON_BIN}" scripts/collect_workload.py "${collect_args[@]}"
