@@ -20,7 +20,7 @@
     "value": "Ubuntu 26.04"
   },
   {
-    "field_name": "Repo Name",
+    "field_name": "Repo Base Name",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
     "value": "sys-bench-amd-stream-ddr5-bandwidth-ubu2604"
   },
@@ -35,199 +35,9 @@
     "value": "Measure sustained CPU STREAM bandwidth"
   },
   {
-    "field_name": "Validation Objective",
-    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "Validates Copy/Scale/Add/Triad Best Rate parse. numactl pinning is not applied"
-  },
-  {
     "field_name": "Metrics",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
     "value": "#1: Best Copy bandwidth, GB/s (copy_bandwidth_gb_s); #2: Best Scale bandwidth, GB/s (scale_bandwidth_gb_s); #3: Best Add bandwidth, GB/s (add_bandwidth_gb_s); #4: Best Triad bandwidth, GB/s (triad_bandwidth_gb_s)"
-  },
-  {
-    "field_name": "Command Tools Executed",
-    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "Compile src/stream.c with gcc -O3 -fopenmp and run build/stream. Does not invoke numactl"
-  },
-  {
-    "field_name": "Command Execution Details and Purpose",
-    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "Compile official STREAM src/stream.c with gcc -O3 -fopenmp, run build/stream under OMP_NUM_THREADS, parse Copy/Scale/Add/Triad Best Rate MB/s, convert to GB/s to measure CPU STREAM bandwidth. numactl is not used"
-  },
-  {
-    "field_name": "Command Methodology",
-    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "Compile official STREAM src/stream.c with gcc -O3 -fopenmp, run build/stream under OMP_NUM_THREADS, parse Copy, Scale, Add, and Triad Best Rate MB/s, convert to GB/s. numactl is not used"
-  },
-  {
-    "field_name": "Execution Description With Parameters",
-    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "Compiles official STREAM src/stream.c inline and runs build/stream with OMP_NUM_THREADS. num_threads: OpenMP workers. array_size: STREAM_ARRAY_SIZE. num_iterations: NTIMES. numactl is not used. output_format: csv"
-  },
-  {
-    "field_name": "Execution Domain",
-    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "CPU / System"
-  },
-  {
-    "field_name": "Workload Category",
-    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "Memory, Bandwidth & Data Movement"
-  },
-  {
-    "field_name": "Workload Type",
-    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "Benchmark"
-  },
-  {
-    "field_name": "Target Hardware",
-    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "CPU"
-  },
-  {
-    "field_name": "GPU Model",
-    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "MI300X"
-  },
-  {
-    "field_name": "Raw Output Format",
-    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "STREAM stdout plus one CSV aggregate. A single row is duplicated to two samples"
-  },
-  {
-    "field_name": "Primary Record Granularity",
-    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "one aggregate CSV row with the four kernel bandwidths"
-  },
-  {
-    "field_name": "Raw Output Example",
-    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "sample_index,status,copy_bandwidth_gb_s,scale_bandwidth_gb_s,add_bandwidth_gb_s,triad_bandwidth_gb_s,error_message\n0,ok,180,175,190,185,"
-  },
-  {
-    "field_name": "run_benchmark Command Plus Options for Smoke Run",
-    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "bash run_benchmark.sh --smoke --validate --numa-node 0 --num-threads 4 --thread-affinity core --array-size 10000000 --num-iterations 2"
-  },
-  {
-    "field_name": "run_benchmark Command Plus Options for Baseline Run",
-    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "bash run_benchmark.sh --baseline --validate --numa-node 0 --num-threads 16 --thread-affinity core --array-size 20000000 --num-iterations 30800"
-  },
-  {
-    "field_name": "run_benchmark Command Plus Options for Extended Run",
-    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "bash run_benchmark.sh --extended --validate --numa-node 0 --num-threads 20 --thread-affinity core --array-size 40000000 --num-iterations 45600"
-  },
-  {
-    "field_name": "Output Fields / Metrics to Parse",
-    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "copy_bandwidth_gb_s, scale_bandwidth_gb_s, add_bandwidth_gb_s, triad_bandwidth_gb_s"
-  },
-  {
-    "field_name": "Success Criteria",
-    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "gcc builds src/stream.c and all four Best Rate bandwidths parse as finite positive GB/s"
-  },
-  {
-    "field_name": "Parser and Normalization Notes",
-    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "Best Rate MB/s is divided by 1000 to produce GB/s. The CSV is one aggregate of Copy, Scale, Add, and Triad. There is no efficiency column"
-  },
-  {
-    "field_name": "Hardware Config",
-    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "Digital Ocean VM (gpu-mi300x1-192gb,20 vCPUs, 240GB RAM, 720GB NVMe), 1xMI300X(192GB-HBM, gfx942, 304CUs)"
-  },
-  {
-    "field_name": "GPU Architecture",
-    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "gfx942 (AMD MI300X)"
-  },
-  {
-    "field_name": "Framework",
-    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "Bash, SQLite, Python, PyYAML, C (not C++), GCC, OpenMP"
-  },
-  {
-    "field_name": "Kernel Version",
-    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "kernel 7.0.0"
-  },
-  {
-    "field_name": "Runtime Language",
-    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "C"
-  },
-  {
-    "field_name": "Container Base Image",
-    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "N/A - host-native Ubuntu 26.04"
-  },
-  {
-    "field_name": "Python Version",
-    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "Python 3.14.8 (uv-managed CPython from `uv python install 3.14`; all benchmark venvs; same build as 24.04). System Python 3.14.4 retained for OS and setup scripts only"
-  },
-  {
-    "field_name": "GPU Runtime Version (was ROCm Version)",
-    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "N/A - ROCm not used"
-  },
-  {
-    "field_name": "BLAS Version (was rocBLAS version)",
-    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "N/A - rocBLAS not used"
-  },
-  {
-    "field_name": "Mistral-7B Version",
-    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "N/A - Mistral not used"
-  },
-  {
-    "field_name": "PyTorch Version",
-    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "N/A - PyTorch not used"
-  },
-  {
-    "field_name": "torchvision Version",
-    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "N/A - torchvision not used"
-  },
-  {
-    "field_name": "vLLM Version",
-    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "N/A - vLLM not used"
-  },
-  {
-    "field_name": "vLLM Wheel/Source Index",
-    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "N/A - vLLM not used"
-  },
-  {
-    "field_name": "SGLang Version",
-    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "N/A - SGLang not used"
-  },
-  {
-    "field_name": "SGLang Repository/Commit",
-    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "N/A - SGLang not used"
-  },
-  {
-    "field_name": "Cmake Version",
-    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "N/A - CMake not used"
-  },
-  {
-    "field_name": "g++ Version",
-    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "g++: 15.2.0"
-  },
-  {
-    "field_name": "Known Runtime Constraints (<=35 Words Each)",
-    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "Arrays must exceed cache. gcc -O3 -fopenmp builds src/stream.c. numactl is not applied. The CSV has no efficiency column"
   },
   {
     "field_name": "Parameter_01",
@@ -328,6 +138,196 @@
     "field_name": "Parameter_20",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
     "value": "-"
+  },
+  {
+    "field_name": "run_benchmark Command Plus Options for Smoke Run (One minute or less)",
+    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
+    "value": "bash run_benchmark.sh --smoke --validate --numa-node 0 --num-threads 4 --thread-affinity core --array-size 10000000 --num-iterations 2"
+  },
+  {
+    "field_name": "run_benchmark Command Plus Options for Baseline Run (3 to 5 minutes)",
+    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
+    "value": "bash run_benchmark.sh --baseline --validate --numa-node 0 --num-threads 16 --thread-affinity core --array-size 20000000 --num-iterations 30800"
+  },
+  {
+    "field_name": "run_benchmark Command Plus Options for Extended Run (8 to 15 minutes)",
+    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
+    "value": "bash run_benchmark.sh --extended --validate --numa-node 0 --num-threads 20 --thread-affinity core --array-size 40000000 --num-iterations 45600"
+  },
+  {
+    "field_name": "Validation Objective",
+    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
+    "value": "Validates Copy/Scale/Add/Triad Best Rate parse. numactl pinning is not applied"
+  },
+  {
+    "field_name": "Command Tools Executed",
+    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
+    "value": "Compile src/stream.c with gcc -O3 -fopenmp and run build/stream. Does not invoke numactl"
+  },
+  {
+    "field_name": "Command Execution Details and Purpose",
+    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
+    "value": "Compile official STREAM src/stream.c with gcc -O3 -fopenmp, run build/stream under OMP_NUM_THREADS, parse Copy/Scale/Add/Triad Best Rate MB/s, convert to GB/s to measure CPU STREAM bandwidth. numactl is not used"
+  },
+  {
+    "field_name": "Command Methodology",
+    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
+    "value": "Compile official STREAM src/stream.c with gcc -O3 -fopenmp, run build/stream under OMP_NUM_THREADS, parse Copy, Scale, Add, and Triad Best Rate MB/s, convert to GB/s. numactl is not used"
+  },
+  {
+    "field_name": "Execution Description With Parameters",
+    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
+    "value": "Compiles official STREAM src/stream.c inline and runs build/stream with OMP_NUM_THREADS. num_threads: OpenMP workers. array_size: STREAM_ARRAY_SIZE. num_iterations: NTIMES. numactl is not used. output_format: csv"
+  },
+  {
+    "field_name": "Execution Domain",
+    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
+    "value": "CPU / System"
+  },
+  {
+    "field_name": "Workload Category",
+    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
+    "value": "Memory, Bandwidth & Data Movement"
+  },
+  {
+    "field_name": "Workload Type",
+    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
+    "value": "Benchmark"
+  },
+  {
+    "field_name": "Target Hardware",
+    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
+    "value": "CPU"
+  },
+  {
+    "field_name": "GPU Model",
+    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
+    "value": "MI300X"
+  },
+  {
+    "field_name": "Raw Output Format",
+    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
+    "value": "STREAM stdout plus one CSV aggregate. A single row is duplicated to two samples"
+  },
+  {
+    "field_name": "Primary Record Granularity",
+    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
+    "value": "one aggregate CSV row with the four kernel bandwidths"
+  },
+  {
+    "field_name": "Raw Output Example",
+    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
+    "value": "sample_index,status,copy_bandwidth_gb_s,scale_bandwidth_gb_s,add_bandwidth_gb_s,triad_bandwidth_gb_s,error_message\n0,ok,180,175,190,185,"
+  },
+  {
+    "field_name": "Output Fields / Metrics to Parse",
+    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
+    "value": "copy_bandwidth_gb_s, scale_bandwidth_gb_s, add_bandwidth_gb_s, triad_bandwidth_gb_s"
+  },
+  {
+    "field_name": "Success Criteria",
+    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
+    "value": "gcc builds src/stream.c and all four Best Rate bandwidths parse as finite positive GB/s"
+  },
+  {
+    "field_name": "Parser and Normalization Notes",
+    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
+    "value": "Best Rate MB/s is divided by 1000 to produce GB/s. The CSV is one aggregate of Copy, Scale, Add, and Triad. There is no efficiency column"
+  },
+  {
+    "field_name": "Hardware Config",
+    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
+    "value": "Digital Ocean VM (gpu-mi300x1-192gb,20 vCPUs, 240GB RAM, 720GB NVMe), 1xMI300X(192GB-HBM, gfx942, 304CUs)"
+  },
+  {
+    "field_name": "GPU Architecture",
+    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
+    "value": "gfx942 (AMD MI300X)"
+  },
+  {
+    "field_name": "Framework",
+    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
+    "value": "Bash, SQLite, Python, PyYAML, C (not C++), GCC, OpenMP"
+  },
+  {
+    "field_name": "Kernel Version",
+    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
+    "value": "kernel 7.0.0"
+  },
+  {
+    "field_name": "Runtime Language",
+    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
+    "value": "C"
+  },
+  {
+    "field_name": "Container Base Image",
+    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
+    "value": "host-native Ubuntu 26.04"
+  },
+  {
+    "field_name": "Python Version",
+    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
+    "value": "Python 3.14.8 (uv-managed CPython from `uv python install 3.14`; all benchmark venvs; same build as 24.04). System Python 3.14.4 retained for OS and setup scripts only"
+  },
+  {
+    "field_name": "GPU Runtime Version (was ROCm Version)",
+    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
+    "value": "N/A - ROCm not used"
+  },
+  {
+    "field_name": "BLAS Version (was rocBLAS version)",
+    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
+    "value": "N/A - rocBLAS not used"
+  },
+  {
+    "field_name": "Mistral-7B Version",
+    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
+    "value": "N/A - Mistral not used"
+  },
+  {
+    "field_name": "PyTorch Version",
+    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
+    "value": "N/A - PyTorch not used"
+  },
+  {
+    "field_name": "torchvision Version",
+    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
+    "value": "N/A - torchvision not used"
+  },
+  {
+    "field_name": "vLLM Version",
+    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
+    "value": "N/A - vLLM not used"
+  },
+  {
+    "field_name": "vLLM Wheel/Source Index",
+    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
+    "value": "N/A - vLLM not used"
+  },
+  {
+    "field_name": "SGLang Version",
+    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
+    "value": "N/A - SGLang not used"
+  },
+  {
+    "field_name": "SGLang Repository/Commit",
+    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
+    "value": "N/A - SGLang not used"
+  },
+  {
+    "field_name": "Cmake Version",
+    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
+    "value": "N/A - CMake not used"
+  },
+  {
+    "field_name": "g++ Version",
+    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
+    "value": "g++: 15.2.0"
+  },
+  {
+    "field_name": "Known Runtime Constraints (<=35 Words Each)",
+    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
+    "value": "Arrays must exceed cache. gcc -O3 -fopenmp builds src/stream.c. numactl is not applied. The CSV has no efficiency column"
   },
   {
     "field_name": "GPU Architecutre ID",
