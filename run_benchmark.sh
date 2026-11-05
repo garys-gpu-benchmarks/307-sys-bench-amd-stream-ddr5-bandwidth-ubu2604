@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # File: run_benchmark.sh
 # Description: Compiles official STREAM src/stream.
-# Execution: bash run_benchmark.sh [--smoke|--baseline|--extended] [--validate]
-# Options: --smoke, --baseline, --extended, --config, --validate, --help
+# Execution: bash run_benchmark.sh [--smoke|--baseline|--extended]
+# Options: --smoke, --baseline, --extended, --config, --help
 # Requirements: bash, python3, repository-local .venv
 # Dependencies: common.sh, collect_workload.py
 # License: Apache-2.0
@@ -20,35 +20,30 @@ Usage: bash run_benchmark.sh [OPTIONS]
 
 Compiles official STREAM src/stream.
 
-Profiles:
+Profiles (default: --smoke):
   --smoke                       Run smoke profile
   --baseline                    Run baseline profile
   --extended                    Run extended profile
 
-Execution:
-  --config <file>               Config file (default: config/benchmark_config.yaml)
-
-Validation and logging:
-  --validate                    Enable result validation (default)
-  --no-validate                 Skip result validation
-  --quiet                       Suppress nonessential stdout
-  --log-level <level>           ERROR|WARN|INFO|DEBUG (default: INFO)
-
-Workload options:
+Parameters (override the profile's value):
   --numa-node <n>               NUMA node selected for placement (smoke/baseline/extended: 0)
   --num-threads <n>             Execution threads issuing work (smoke 4, baseline 16, extended 20)
   --thread-affinity <value>     Policy or CPU/NUMA placement for execution threads (smoke/baseline/extended: core)
   --array-size <n>              Number of elements in benchmark arrays (smoke 10000000, baseline 20000000, extended 40000000)
   --num-iterations <n>          Number of timed repetitions (smoke 2, baseline 30800, extended 45600)
 
-Information:
+General options:
+  --config <file>               Config file (default: config/benchmark_config.yaml)
+  --quiet                       Suppress nonessential stdout
+  --log-level <level>           ERROR|WARN|INFO|DEBUG (default: INFO)
   --specification               Print this workload's specification and exit
   --help                        Show this help and exit
 
 Examples:
-  bash run_benchmark.sh --smoke --validate
-  bash run_benchmark.sh --baseline --validate
-  bash run_benchmark.sh --extended --validate
+  bash run_benchmark.sh --smoke
+  bash run_benchmark.sh --baseline
+  bash run_benchmark.sh --extended
+  bash run_benchmark.sh --baseline --num-threads 8
 USAGE
 }
 
@@ -64,7 +59,6 @@ done
 
 PROFILE="smoke"
 CONFIG_FILE="config/benchmark_config.yaml"
-VALIDATE=1
 QUIET=0
 LOG_LEVEL_VALUE="INFO"
 NUMA_NODE=""
@@ -79,8 +73,7 @@ while [[ $# -gt 0 ]]; do
     --baseline) PROFILE="baseline"; shift ;;
     --extended) PROFILE="extended"; shift ;;
     --config) CONFIG_FILE="${2:-}"; shift 2 ;;
-    --validate) VALIDATE=1; shift ;;
-    --no-validate) VALIDATE=0; shift ;;
+    --validate) shift ;;  # ignored; result validation always runs
     --quiet) QUIET=1; shift ;;
     --log-level) LOG_LEVEL_VALUE="${2:-}"; shift 2 ;;
     --numa-node) NUMA_NODE="${2:-}"; shift 2 ;;
@@ -128,7 +121,6 @@ OUTPUT_FORMAT="$(yaml_get output_format)"
 OUTPUT_FORMAT="${OUTPUT_FORMAT:-csv}"
 
 BENCHMARK_RUN_COMMAND="bash run_benchmark.sh --${PROFILE}"
-[[ "${VALIDATE}" -eq 1 ]] && BENCHMARK_RUN_COMMAND+=" --validate"
 [[ -n "${NUMA_NODE}" ]] && BENCHMARK_RUN_COMMAND+=" --numa-node $(printf %q "${NUMA_NODE}")"
 [[ -n "${NUM_THREADS}" ]] && BENCHMARK_RUN_COMMAND+=" --num-threads $(printf %q "${NUM_THREADS}")"
 [[ -n "${THREAD_AFFINITY}" ]] && BENCHMARK_RUN_COMMAND+=" --thread-affinity $(printf %q "${THREAD_AFFINITY}")"
@@ -198,7 +190,7 @@ run_validate() {
 
 run_collection
 run_parse
-[[ "${VALIDATE}" -eq 1 ]] && run_validate
+run_validate
 record_benchmark_stop
 capture_journal_warnings "${RUN_DIR}" "${BENCHMARK_START_DATETIME}" "${STOP_TIME}"
 bash scripts/collect_hw_sw_info.sh "${RUN_DIR}"
