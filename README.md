@@ -50,15 +50,14 @@ Profile values live in `config/benchmark_config.yaml`.
 
 - The smoke profile is a quick check with reduced sizes and iteration counts. Use `--baseline` or `--extended` for representative numbers.
 - Arrays must exceed cache.
-- gcc -O3 -fopenmp builds src/stream.c.
-- numactl is not applied.
+- If the host refuses the numactl bind (common in containers), STREAM runs unbound and logs a warning.
 - The CSV has no efficiency column.
 
 ## Output
 
 | Path | Contents |
 |---|---|
-| `results/raw/<timestamp>_<repo>_<host>/` | Raw tool output, `metrics_summary.txt`, and `hardware_info.txt`, `software_info.txt`, `errors_info.txt` |
+| `results/raw/YYYYMMDD_HHMMSSZ_WORKLOAD-<NNN>_SYSTEM-<hostname>/` | Raw tool output, `metrics_summary.txt`, and `hardware_info.txt`, `software_info.txt`, `errors_info.txt` |
 | `results/benchmark.db` | SQLite history of every run |
 | `results/summary.json` | Metrics from the most recent run |
 | `/var/opt/benchmarks/runtime_ledger.csv` | One row per run, shared by every workload on the host |

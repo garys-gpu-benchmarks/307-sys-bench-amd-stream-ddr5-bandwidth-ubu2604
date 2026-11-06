@@ -17,7 +17,7 @@ Compiles official STREAM src/stream.c inline and runs build/stream with OMP_NUM_
 ## Invocation
 
 ```bash
-Compile src/stream.c with gcc -O3 -fopenmp and run build/stream. Does not invoke numactl
+Compile src/stream.c with gcc -O3 -fopenmp and run build/stream
 ```
 
 ## Raw Output Format
@@ -40,12 +40,12 @@ Compiles official STREAM src/stream.c inline and runs build/stream with OMP_NUM_
 
 ## Installation and Execution Summary
 
-Compile official STREAM src/stream.c with gcc -O3 -fopenmp, run build/stream under OMP_NUM_THREADS, parse Copy/Scale/Add/Triad Best Rate MB/s, convert to GB/s to measure CPU STREAM bandwidth. numactl is not used
+Compile official STREAM src/stream.c with gcc -O3 -fopenmp, run build/stream under OMP_NUM_THREADS, parse Copy/Scale/Add/Triad Best Rate MB/s, convert to GB/s to measure CPU STREAM bandwidth. numactl binds to numa_node when the host accepts it
 
 ## Platform Portability
 
 - **AMD (primary):** ```bash
-Compile src/stream.c with gcc -O3 -fopenmp and run build/stream. Does not invoke numactl
+Compile src/stream.c with gcc -O3 -fopenmp and run build/stream
 ```
 - **NVIDIA:** Primary target is AMD ROCm. NVIDIA notes in this section are reference only and are not the execution path.
 
