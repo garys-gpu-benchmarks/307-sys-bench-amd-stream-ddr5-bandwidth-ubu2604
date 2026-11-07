@@ -31,9 +31,16 @@ Profiles (default: --smoke):
 Parameters (override the profile's value):
   --numa-node <n>               NUMA node selected for placement (smoke/baseline/extended: 0)
   --num-threads <n>             Execution threads issuing work (smoke 4, baseline 16, extended 20)
-  --thread-affinity <value>     Policy or CPU/NUMA placement for execution threads (smoke/baseline/extended: core)
-  --array-size <n>              Number of elements in benchmark arrays (smoke 10000000, baseline 20000000, extended 40000000)
-  --num-iterations <n>          Number of timed repetitions (smoke 2, baseline 30800, extended 45600)
+  --thread-affinity <value>     Policy or CPU/NUMA placement for execution threads
+                                  all profiles: core
+  --array-size <n>              Number of elements in benchmark arrays
+                                  smoke:    10000000
+                                  baseline: 20000000
+                                  extended: 40000000
+  --num-iterations <n>          Number of timed repetitions
+                                  smoke:    2
+                                  baseline: 30800
+                                  extended: 45600
 
 General options:
   --config <file>               Config file (default: config/benchmark_config.yaml)
