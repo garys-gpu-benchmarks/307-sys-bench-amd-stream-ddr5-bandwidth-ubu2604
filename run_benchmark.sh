@@ -16,11 +16,11 @@ capture_benchmark_run_command_submitted "$@"
 
 usage() {
   cat <<'USAGE'
+
 Usage: bash run_benchmark.sh [OPTIONS]
 
 Workload Name:          STREAM - CPU (Copy/Scale/Add/Triad).
 Main Goal:              Measure sustained CPU STREAM bandwidth.
-Validation Objective:   Validates Copy, Scale, Add, and Triad DRAM bandwidth.
 Command Tools Executed: Compile src/stream.c with gcc -O3 -fopenmp and run build/stream.
 
 Profiles (default: --smoke):

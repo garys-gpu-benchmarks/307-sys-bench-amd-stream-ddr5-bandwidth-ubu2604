@@ -35,6 +35,11 @@
     "value": "Measure sustained CPU STREAM bandwidth"
   },
   {
+    "field_name": "Command Tools Executed",
+    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
+    "value": "Compile src/stream.c with gcc -O3 -fopenmp and run build/stream"
+  },
+  {
     "field_name": "Metrics",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
     "value": "#1: Best Copy bandwidth, GB/s (copy_bandwidth_gb_s); #2: Best Scale bandwidth, GB/s (scale_bandwidth_gb_s); #3: Best Add bandwidth, GB/s (add_bandwidth_gb_s); #4: Best Triad bandwidth, GB/s (triad_bandwidth_gb_s)"
@@ -140,16 +145,6 @@
     "value": "-"
   },
   {
-    "field_name": "Validation Objective",
-    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "Validates Copy, Scale, Add, and Triad DRAM bandwidth"
-  },
-  {
-    "field_name": "Command Tools Executed",
-    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "Compile src/stream.c with gcc -O3 -fopenmp and run build/stream"
-  },
-  {
     "field_name": "run_benchmark Command Plus Options for Smoke Run (One minute or less)",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
     "value": "bash run_benchmark.sh --smoke --validate --numa-node 0 --num-threads 4 --thread-affinity core --array-size 10000000 --num-iterations 2"
@@ -163,6 +158,11 @@
     "field_name": "run_benchmark Command Plus Options for Extended Run (8 to 15 minutes)",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
     "value": "bash run_benchmark.sh --extended --validate --numa-node 0 --num-threads 20 --thread-affinity core --array-size 40000000 --num-iterations 45600"
+  },
+  {
+    "field_name": "Validation Objective",
+    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
+    "value": "Validates Copy, Scale, Add, and Triad DRAM bandwidth"
   },
   {
     "field_name": "Command Execution Details and Purpose",
