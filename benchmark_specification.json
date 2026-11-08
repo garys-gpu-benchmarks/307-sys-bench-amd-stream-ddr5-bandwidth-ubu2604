@@ -205,14 +205,14 @@
     "value": "MI300X"
   },
   {
-    "field_name": "Raw Output Format",
-    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "STREAM stdout plus one CSV aggregate. A single row is duplicated to two samples"
-  },
-  {
     "field_name": "Primary Record Granularity",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
     "value": "one aggregate CSV row with the four kernel bandwidths"
+  },
+  {
+    "field_name": "Raw Output Format",
+    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
+    "value": "STREAM stdout plus one CSV aggregate. A single row is duplicated to two samples"
   },
   {
     "field_name": "Raw Output Example",
@@ -225,14 +225,14 @@
     "value": "copy_bandwidth_gb_s, scale_bandwidth_gb_s, add_bandwidth_gb_s, triad_bandwidth_gb_s"
   },
   {
-    "field_name": "Success Criteria",
-    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "gcc builds src/stream.c and all four Best Rate bandwidths parse as finite positive GB/s"
-  },
-  {
     "field_name": "Parser and Normalization Notes",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
     "value": "Best Rate MB/s is divided by 1000 to produce GB/s. The CSV is one aggregate of Copy, Scale, Add, and Triad. There is no efficiency column"
+  },
+  {
+    "field_name": "Success Criteria",
+    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
+    "value": "gcc builds src/stream.c and all four Best Rate bandwidths parse as finite positive GB/s"
   },
   {
     "field_name": "Hardware Config",
