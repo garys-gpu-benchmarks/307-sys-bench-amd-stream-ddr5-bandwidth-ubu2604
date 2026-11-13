@@ -40,6 +40,11 @@
     "value": "Compile src/stream.c with gcc -O3 -fopenmp and run build/stream"
   },
   {
+    "field_name": "Execution Description With Parameters",
+    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
+    "value": "Compiles official STREAM src/stream.c inline and runs build/stream with OMP_NUM_THREADS. num_threads: OpenMP workers. array_size: STREAM_ARRAY_SIZE. num_iterations: NTIMES. numactl binds to numa_node when the host accepts it. output_format: csv"
+  },
+  {
     "field_name": "Metrics",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
     "value": "#1: Best Copy bandwidth, GB/s (copy_bandwidth_gb_s); #2: Best Scale bandwidth, GB/s (scale_bandwidth_gb_s); #3: Best Add bandwidth, GB/s (add_bandwidth_gb_s); #4: Best Triad bandwidth, GB/s (triad_bandwidth_gb_s)"
@@ -173,11 +178,6 @@
     "field_name": "Command Methodology",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
     "value": "Compile official STREAM src/stream.c with gcc -O3 -fopenmp, run build/stream under OMP_NUM_THREADS, parse Copy, Scale, Add, and Triad Best Rate MB/s, convert to GB/s. numactl binds to numa_node when the host accepts it"
-  },
-  {
-    "field_name": "Execution Description With Parameters",
-    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "Compiles official STREAM src/stream.c inline and runs build/stream with OMP_NUM_THREADS. num_threads: OpenMP workers. array_size: STREAM_ARRAY_SIZE. num_iterations: NTIMES. numactl binds to numa_node when the host accepts it. output_format: csv"
   },
   {
     "field_name": "Execution Domain",
