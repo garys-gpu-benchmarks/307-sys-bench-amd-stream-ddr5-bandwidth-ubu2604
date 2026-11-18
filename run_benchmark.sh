@@ -37,7 +37,7 @@ Parameters (override the profile's value):
                                   baseline: 20000000
                                   extended: 40000000
   --num-iterations <n>          Number of timed repetitions
-                                  smoke:    2
+                                  smoke:    368
                                   baseline: 30800
                                   extended: 45600
 

@@ -26,7 +26,7 @@ bash run_benchmark.sh --smoke
 | `num_threads` | `--num-threads` | 4 | 16 | 20 |
 | `thread_affinity` | `--thread-affinity` | core | core | core |
 | `array_size` | `--array-size` | 10000000 | 20000000 | 40000000 |
-| `num_iterations` | `--num-iterations` | 2 | 30800 | 45600 |
+| `num_iterations` | `--num-iterations` | 368 | 30800 | 45600 |
 
 Pick a profile with `--smoke` (default), `--baseline` or `--extended`. Any flag in the table overrides that profile's value:
 

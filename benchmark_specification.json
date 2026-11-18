@@ -152,7 +152,7 @@
   {
     "field_name": "run_benchmark Command Plus Options for Smoke Run (One minute or less)",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "bash run_benchmark.sh --smoke --validate --numa-node 0 --num-threads 4 --thread-affinity core --array-size 10000000 --num-iterations 2"
+    "value": "bash run_benchmark.sh --smoke --validate --numa-node 0 --num-threads 4 --thread-affinity core --array-size 10000000 --num-iterations 368"
   },
   {
     "field_name": "run_benchmark Command Plus Options for Baseline Run (3 to 5 minutes)",
@@ -412,7 +412,7 @@
   {
     "field_name": "Profile Parameter Values",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Parameters_SmokeBaselineExtend",
-    "value": "{\"numa_node\": {\"smoke\": \"0\", \"baseline\": \"0\", \"extended\": \"0\"}, \"num_threads\": {\"smoke\": \"4\", \"baseline\": \"16\", \"extended\": \"20\"}, \"thread_affinity\": {\"smoke\": \"core\", \"baseline\": \"core\", \"extended\": \"core\"}, \"array_size\": {\"smoke\": \"10000000\", \"baseline\": \"20000000\", \"extended\": \"40000000\"}, \"num_iterations\": {\"smoke\": \"2\", \"baseline\": \"30800\", \"extended\": \"45600\"}}"
+    "value": "{\"numa_node\": {\"smoke\": \"0\", \"baseline\": \"0\", \"extended\": \"0\"}, \"num_threads\": {\"smoke\": \"4\", \"baseline\": \"16\", \"extended\": \"20\"}, \"thread_affinity\": {\"smoke\": \"core\", \"baseline\": \"core\", \"extended\": \"core\"}, \"array_size\": {\"smoke\": \"10000000\", \"baseline\": \"20000000\", \"extended\": \"40000000\"}, \"num_iterations\": {\"smoke\": \"368\", \"baseline\": \"30800\", \"extended\": \"45600\"}}"
   },
   {
     "field_name": "Profile Command Authorship",

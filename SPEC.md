@@ -12,7 +12,7 @@ Compiles official STREAM src/stream.c inline and runs build/stream with OMP_NUM_
 | num_threads | `--num-threads` | smoke=4, baseline=16, extended=20 | 16 | From Parameter list; see Execution Description With Parameters. |
 | thread_affinity | `--thread-affinity` | smoke=core, baseline=core, extended=core | core | From Parameter list; see Execution Description With Parameters. |
 | array_size | `--array-size` | smoke=10000000, baseline=20000000, extended=40000000 | 20000000 | From Parameter list; see Execution Description With Parameters. |
-| num_iterations | `--num-iterations` | smoke=2, baseline=30800, extended=45600 | 30800 | From Parameter list; see Execution Description With Parameters. |
+| num_iterations | `--num-iterations` | smoke=368, baseline=30800, extended=45600 | 30800 | From Parameter list; see Execution Description With Parameters. |
 
 ## Invocation
 
